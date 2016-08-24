@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="helper" class="com.cg.demo.MyHelper" scope="prototype"></bean>
+	<bean id="abstractLookupBean" class="com.cg.demo.AbstractLookupDemoBean">
+		<lookup-method name="getMyHelper" bean="helper"/>	
+	</bean>
+	<bean id="standardLookupBean" class="com.cg.demo.StandardLookupBean">
+		<property name="myHelper">
+			<ref local="helper"/>
+		</property>
+	</bean>
+</beans>
+
+<!--
+	The name attribute of <lookup-method> tag tells Spring to the name of the method ton the bean that it should
+	override. This method must not accept any arguments, and return type should be that of the bean you want to
+	return from the method.
+	The bean attribute tell Spring which bean the lookup method should return. 
+-->

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="homePhone" class="com.cg.demo.Phone">
+		<property name="type">
+			<value> Home</value>
+		</property>
+		<property name="no">
+			<value>020-24283484</value>
+		</property>
+	</bean>
+
+	<bean id="mobilePhone" class="com.cg.demo.Phone">
+		<property name="type">
+			<value>Mobile</value>
+		</property>
+		<property name="no">
+			<value>9850276767</value>
+		</property>
+	</bean>
+
+	<bean id="homeAddress" class="com.cg.demo.Address">
+		<property name="line">
+			<value>D-10 Chintamani Residency, Bibwewadi</value>
+		</property>
+		<property name="city">
+			<value>Pune</value>
+		</property>
+	</bean>
+	
+	<bean id="officeAddress" class="com.cg.demo.Address">
+		<property name="line">
+			<value>Talawade MIDC</value>
+		</property>	
+		<property name="city">
+			<value>Pune</value>
+		</property>
+	</bean>
+	
+	<bean id="project1" class="com.cg.demo.Project">
+		<property name="name">
+			<value>Morgan</value>
+		</property>
+	</bean>
+	
+	<bean id="project2" class="com.cg.demo.Project">
+		<property name="name">
+			<value>Sisco</value>
+		</property>
+	</bean>
+	<bean id="employee" class="com.cg.demo.Employee">
+	
+		<property name="address">
+		<map>
+			<entry key="Home Address">
+				<ref bean="homeAddress"/>
+			</entry>
+			<entry key="Office Address">
+				<ref bean="officeAddress"/>
+			</entry>
+		</map>
+		</property>
+		
+		<property name="name">
+			<value>Sagar Kulkarni</value>
+		</property>
+		
+		<property name="phones">
+			<list>
+				<ref bean="homePhone"/>
+				<ref bean="mobilePhone"/>
+			</list>
+		</property>
+		
+		<property name="projects">
+			<set>
+				<ref bean="project1"/>
+				<ref bean="project2"/>
+			</set>
+		</property>
+		
+		<property name="family">
+			<props>
+				<prop key="Spouse">Mrudula</prop>
+				<prop key="Child1">Renu</prop>
+			</props>
+		</property>
+	</bean>	
+</beans>

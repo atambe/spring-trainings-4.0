@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans-2.0.dtd" >
+<beans>
+	<bean id="employeeDefaults" class="com.cg.demo.EmployeeDefaults"></bean>
+	<bean id="employee" class="com.cg.demo.Employee">
+		<property name="name">
+		<value>#{employeeDefaults.name}</value>
+		</property>
+		<property name="age">
+		<value> #{employeeDefaults.age} </value>
+		</property>
+		<property name="height">
+		<value>#{employeeDefaults.height}</value>
+		</property>
+		<property name="programmer">
+		<value>#{employeeDefaults.programmer}</value>
+		</property>
+		<property name="department">
+		<ref bean="department"/>
+		</property>
+	</bean>
+	<bean id="department" class="com.cg.demo.Department">
+		<property name="name" >
+		<value>TDE Java</value>
+		</property>
+	</bean>
+</beans>

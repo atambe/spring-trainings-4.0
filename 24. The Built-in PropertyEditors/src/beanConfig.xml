@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+		<property name="customEditors">
+			<map>
+				<entry key="java.util.Date">
+					<bean class="org.springframework.beans.propertyeditors.CustomDateEditor">
+						<constructor-arg>
+							<bean class="java.text.SimpleDateFormat">
+								<constructor-arg value="yyyy-MM-dd"></constructor-arg>
+							</bean>
+						</constructor-arg>
+						<constructor-arg value="true"></constructor-arg>
+					</bean>
+				</entry>
+				<entry key="java.lang.String">
+					<bean class="org.springframework.beans.propertyeditors.StringTrimmerEditor">
+						<constructor-arg value="true"></constructor-arg>
+					</bean>
+				</entry>
+			</map>			
+		</property>
+	</bean>
+	<bean id="builtInSimple" class="com.cg.demo.PropertyEditorBean">
+		<property name="bytes">
+			<value>Namaste Spring Learners</value>
+		</property>
+		<property name="cls">
+			<value>java.lang.String</value>
+		</property>
+		<property name="date">
+			<value>2013-07-14</value>
+		</property>
+		<property name="file">
+			<value>beanConfig.xml</value>
+		</property>
+		<property name="floatValue">
+			<value>98.3</value>
+		</property>
+		<property name="locale">
+			<value>en_US</value>
+		</property>
+
+		<property name="pattern">
+			<value>a*b</value>
+		</property>
+		<property name="properties">
+			<value>
+				name=Renu
+				age=8
+		</value>
+		</property>
+		<property name="stream">
+			<value>beanConfig.xml</value>
+		</property>
+
+		<property name="stringList">
+			<util:list>
+				<value>Renu</value>
+				<value>Sukha</value>
+				<value>Mrudul</value>
+			</util:list>
+		</property>
+		<property name="trimString">
+			<value> This String needs to be trimmed   </value>
+		</property>
+		<property name="trueOrFalse">
+			<value>true</value>
+		</property>
+		<property name="url">
+			<value>http://www.hrworkwaysindia.com</value>
+		</property>
+	</bean>
+</beans>

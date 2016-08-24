@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<context:annotation-config></context:annotation-config>
+	<context:component-scan base-package="com.cg.demo"></context:component-scan>
+	<bean id="department" class="com.cg.demo.Department">
+		<constructor-arg>
+			<value>TDI Java</value>
+		</constructor-arg>
+	</bean>
+	<bean id="employeeWithoutDepartment" class="com.cg.demo.Employee">
+		<property name="name">
+			<value>Sagar</value>
+		</property>
+	</bean>
+	<bean id="employeeWithoutName" class="com.cg.demo.Employee" lazy-init="true"></bean>
+	<bean id="employeeWithAllPropertiesSet" class="com.cg.demo.Employee">
+		<property name="name">
+			<value>Renu</value>
+		</property>
+		<property name="department">
+			<ref bean="department" />
+		</property>
+	</bean>
+</beans>
